@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+   <title>Colaboratorio</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="css/style.css?var=20150622506093302" rel="stylesheet">
+   <link href="css/bootstrap.css?con=432423" rel="stylesheet"> 
+
+   <link href="css/OpenSans.css?con=432423" rel="stylesheet"> 
+
+   <script type="text/javascript">
+   //Testing if the browser accepts 3rd party cookies - required for foodl and maybe others in a future
+   window._3rd_party_test_step1_loaded = function(){
+     var step2Url = 'http://magic-project.eu/cookiesStep2.js.php',
+     resultsEl = document.getElementById('3rd_party_cookie_test_results'),
+     step2El = document.createElement('script');
+
+     step2El.setAttribute('src', step2Url);
+     resultsEl.appendChild(step2El);
+   }
+   window._3rd_party_test_step2_loaded = function(cookieSuccess){
+     var resultsEl = document.getElementById('3rd_party_cookie_test_results');
+ 
+     if (!cookieSuccess) {
+       document.getElementById('foodl_link').setAttribute('href', 'enableCookies.php');
+     }
+   }
+
+   //Setting lang
+   var langAux= navigator.language;
+   var lang=langAux.substring(0,2);
+
+   if (lang != "es" && lang != "pt" && lang != "fr") {
+      lang=defaultLang;
+   }
+   </script>
+
+
+</head>
+<body>
+ <div id="todo">
+    <header id="cabecera_principal" role="navigation" class="navbar navbar-fixed-top" style="display:none">
+     <div id="todo-cabecera">
+      <div class="container-fluid container-header">
+
+<a href="#" class="navbar-brand logo">
+<table>
+<tr>
+<td style="padding: 10px;"><img src="images/logoTop.png" class="" height="40"></td>
+</tr>
+</table>
+</a>
+<a href="#" class="portal-brand"><span id="str_colaboratorio">COLABORATORIO</span>
+</a>
+
+<script src="config.js"></script> 
+
+	<!--<div id="user_info_content" class="collapse navbar-collapse">-->
+        <div id="user_info_content" class="usuario-bar2">
+          <ul class="nav pull-right">
+          <!--<ul class="nav pull-right usuario-bar2">-->
+            <li class="login-nav dropdown">
+            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" > -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+            	<span id="userinfo_username"></span> 
+            	<img id="userinfo_avatar" class="img-circle" alt="" src="">
+                <div id="userinfo_notifications" class="notificaciones"></div>
+            </a>
+                <ul class="dropdown-menu">
+                    <a id="profile_link" href="profile" target="elciraContent"><li id="str_ver_perfil">Ver Perfil</li></a>
+                    <a id="notifications_link" href="notifications" target="elciraContent"><li id="str_notificaciones">Notificaciones<span>2</span></li></a>
+                    <a id="inbox_link" href="inbox" target="elciraContent"><li id="str_bandeja_de_entrada"><span>3</span></li></span></a>
+                    <a id="contacts_link" href="contacts" target="elciraContent"><li id="str_contacts">Mis Contactos<span>4</span></li></a>
+                    <a id="pending_link" href="contacts" target="elciraContent"><li id="str_pending">Solicitudes Pendientes</li></a>
+                    <a id="photos_link" href="photos" target="elciraContent"><li id="str_mis_documentos">Mis Archivos</li></a>
+                    <a  data-target="#modal-file" data-toggle="modal"><li id="str_copiar_enlace_personal">Enlace Personal<br>VC Espresso</li></a>
+                    <a id="edit_link" href="edit" target="elciraContent"><li id="str_configuracion">Configuración</li></a>
+                </ul>
+            </li>
+            <li class="nav-last logout-nav" id="slo_li" style="display: none"><a href="#" id="slo_href"><span class="glyphicon glyphicon-off"></span></a></li>
+          </ul>
+          <script>
+            if (use_slo == '1') { 
+              document.getElementById('slo_li').style.display = 'block';
+              document.getElementById('slo_href').href = slo_url;
+            }
+          </script>
+        </div><!-- /.nav-collapse user_info_content -->
+        <div class="tools-top banderas-bar2">
+          <ul>
+           
+          <li id="red-avanzada" class="red-avanzada pull-right">
+          <span><img id="red-avanzada-icono"  src="" /></span>
+          <div id="mensaje-red" class="mensaje-red"></div>
+          </li>
+          	<li class="flags">
+           	<div class="flag-header" id="es"><img src="images/espanol.jpg"></div>
+            	<div class="flag-header" id="pt"><img src="images/portugues.jpg"></div>
+		 <div class="flag-header" id="fr"><img src="images/fra.jpg"></div>
+            	<div class="flag-header" id="en"><img src="images/eng.jpg"></div>
+        	</li>
+         
+          </ul>
+      	</div>
+      </div><!-- /.container container-header -->
+     </div>
+    </header>
+    
+    
+        <div id="menu-lateral" class="navbar-left" style="display:none">
+           <ul class="menu-servicios">
+          
+               <a title="" data-original-title="" id="frontpage_link" href="frontpage" target="elciraContent">
+               		<li class="menu-active" id="li_frontpage_link">
+                     <div style=" height:0px; width:195px;" >
+           </div>
+       		
+                    	<span class="icon"><img class="" src="images/home.png"></span><span id="str_ir_al_inicio">Inicio</span>
+               		</li>
+               </a>
+               <a data-toggle="tooltip" data-original-title="" id="groups_link" href='groups' target="elciraContent"> 
+               		<li id="li_groups_link">
+                    	<span class="icon"><img class="" src="images/community.png" /></span><span id="str_comunidades">Comunidades</span>
+                    </li>
+               </a>
+                <a  data-toggle="tooltip" data-original-title="" id="socios_link" href='socios' target="elciraContent"> 
+               		<li id="li_socios_link">
+                    	<span class="icon"><img class="" src="images/afbs.png" /></span><span id="str_socios">Fondos y socios</span>
+                    </li>
+               </a>
+           		<a data-toggle="tooltip"  data-original-title="" id="vc-espresso_link" target="elciraContent" href='vc-espresso'>
+                	<li id="li_vc-espresso_link">
+                    	<span class="icon"><img class="" src="images/vcexpress-icon.png" /></span>VC Espresso
+                    </li>
+               </a>
+               <a data-toggle="tooltip" target="elciraContent" data-original-title="" id="sivic_link" href='sivic'>
+               		<li id="li_sivic_link">
+                		<span class="icon"><img class="" src="images/conversation.png" /></span>SIVIC
+                    </li>
+               </a>
+               
+               <a  data-toggle="tooltip" target="elciraContent" data-original-title="" id="filesender_link" href="filesender">
+               		<li id="li_filesender_link">
+                    	<span class="glyphicon glyphicon-transfer icon-envio"></span>eNVIO
+                    </li>
+               </a>
+              
+               <a data-toggle="tooltip" target="elciraContent" data-original-title="" id="eventos_link" href='eventos'>
+               		<li id="li_eventos_link">
+                		<span class="icon"><img class="" src="images/evento.png" /></span><span id="str_eventos">Agenda Global</span>
+                    </li>
+               </a>
+              
+               <a data-toggle="tooltip" target="elciraContent" data-original-title="" id="foodl_link" href='foodl'>
+                              <li id="li_foodl_link">
+                      <span class="glyphicon glyphicon-hand-up icon-envio"></span>Foodle<span id="3rd_party_cookie_test_results"></span>
+                    </li>
+               </a>
+              
+           </ul>
+           
+        </div>
+        <!-- Contenefor ELCIRA -->
+        
+     <div id="container" class="login">
+  
+    <iframe width="100%"              align="top" frameborder="0" class="wrapper"                src="" name="elciraContent" id="elciraContent">
+   		NO_IFRAMES</iframe>    
+        
+     </div>
+        
+        
+        <!-- Contenefor ELCIRA -->        
+    
+   
+    <!-- Container -->
+   <footer class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="logos">
+   </footer>
+
+    <div id="activeTab" style="display:none"></div>
+    <div class="modal fade " id="modal-file" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+	<div class="modal-content">
+     				 <div class="modal-header">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                     </div>
+                      <div class="modal-body compartir">
+                      <h5 class="modal-title" id='titulo_modal_link_vce'><strong>Enlace Personal VC Espresso</strong></h5>
+                       <p id='parrafo_modal_link_vce'>Por favor copie el siguiente enlace</p>
+                      <div class="input-group">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-new-window" onClick="copiar()"></span></span>
+
+                          <script>
+                          function copiar() {
+                            var copyTextarea = document.querySelector('.form-control');
+                            copyTextarea.select();
+                            window.open(copyTextarea.value);
+                          }
+                          </script>
+
+                          <input onClick="this.select(); document.execCommand('copy');" type="text" id="vce_link" value="" name="vce_link" class="form-control">
+
+                      </div><!-- Input group -->
+                      
+                      </div>
+                  <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn pull-left btn-default btn-sm" type="button"><span id='boton_modal_cancelar'>Cancelar</span></button>
+                    <button data-dismiss="modal" class="btn btn-sm btn-primary pull-right btn-compartir" onClick="document.querySelector('.form-control').select(); document.execCommand('copy');"><span id='boton_modal_aceptar'>Copiar</span></button>
+                  </div>
+    			</div><!-- /.modal-content -->
+  			</div>
+            </div>
+            
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-hover-dropdown.js"></script>
+    <script src="js/script.js?var=2"></script>
+
+    <script src="js/localmessage.js?serial=20fe333784"></script>
+    
+    <script>
+      if (show_logos == '1') { 
+        var footer_html = `
+            <div id="todo-footer">
+		<div class="container" style="text-align:center">
+                <div class="logos-footer"><img src="files/01_innovared.png"></div>
+                <div class="logos-footer"><img src="files/02_rnp.png"></div>
+                <div class="logos-footer"><img src="files/03_renata.png"></div>
+                <div class="logos-footer"><img src="files/04_redconare.png"></div>
+                <div class="logos-footer"><img src="files/05_reuna.png"></div>
+                <div class="logos-footer"><img src="files/06_cedia.png"></div>
+                <div class="logos-footer"><img src="files/07_raices.png"></div>
+                <div class="logos-footer"><img src="files/08_ragie.png"></div>
+                <div class="logos-footer"><img src="files/09_cudi.png"></div>
+                <div class="logos-footer"><img src="files/10_raap.png"></div>
+                <div class="logos-footer"><img src="files/11_rau.png"></div>
+                <div class="logos-footer"><img src="files/12_reacciun.png"></div>
+                <div class="logos-footer"><img src="files/13_ce.png"></div>
+		<div class="logos-footer"><img src="files/14_elcira.png"></div>
+           </div>`;
+        $('#logos').html(footer_html);
+      } else {
+	$('#logos').height(0);
+	$('#logos').css('min-height', '0px');
+	$('#container').css('margin-bottom', '0px');
+      }
+    </script>
+    
+   <script>
+
+	
+	var cadGET=  encodeURIComponent(location.search.substr(1,location.search.length));
+	
+   /*Cambio de clase para el menu activo izquierdo  */
+   
+   $("#groups_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_groups_link").attr('class', 'menu-active');
+   	}
+   );
+   
+   $("#socios_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_socios_link").attr('class', 'menu-active');
+   	}
+   );
+   
+   
+   
+  $("#frontpage_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_frontpage_link").attr('class', 'menu-active');
+		
+		
+   	}
+   );
+
+   
+  $("#frontpage_link_1").click(
+        function()
+        {
+                $(".menu-active").attr('class', '');
+                $("#li_frontpage_link").attr('class', 'menu-active');
+        }
+   );
+   
+  $("#frontpage_link_2").click(
+        function()
+        {
+                $(".menu-active").attr('class', '');
+                $("#li_frontpage_link").attr('class', 'menu-active');
+        }
+   );
+
+
+  $("#vc-espresso_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_vc-espresso_link").attr('class', 'menu-active');
+   	}
+   );
+
+
+  $("#sivic_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_sivic_link").attr('class', 'menu-active');
+   	}
+   );
+
+
+  $("#filesender_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_filesender_link").attr('class', 'menu-active');
+   	}
+   );
+   
+   $("#eventos_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_eventos_link").attr('class', 'menu-active');
+   	}
+   );
+
+   $("#foodl_link").click(
+   	function()
+   	{
+		$(".menu-active").attr('class', '');
+		$("#li_foodl_link").attr('class', 'menu-active');
+   	}
+   );
+
+        $( document ).ready(function() {
+
+                $("#elciraContent").attr('src',cambiar_urls(lang));
+                $('#es, #pt, #en, #fr').click(function(){
+                        cambiarIdioma(this.id);
+                        cambiar_urls(this.id);
+                        $('.menu-active').parent().click();
+                });
+        });
+
+
+	
+   function cambiar_urls(lang)
+   {
+	   
+	//traduccion de los mensajes del conetenedor 
+	switch(lang) {
+	case 'es':
+		var str_ir_al_inicio="Inicio";
+		var str_eventos="Agenda Global";
+		var str_foodl="Foodle";
+		var str_colaboratorio="COLABORATORIO";
+		var str_ver_perfil="Ver Perfil";
+		var str_contacts="Mis Contactos";
+		var str_pending="Solicitudes Pendientes <i class='pull-right' style='font-style:normal;' id='userinfo_friendsCounter'></i>";
+		var str_notificaciones="Notificaciones <i class='pull-right' style='font-style:normal;' id='userinfo_eventsCounter'></i> <span>2</span>";
+		var str_configuracion="Configuración";
+		var str_mis_documentos="Mis Archivos";
+		var str_copiar_enlace_personal="Enlace Personal<br>VC Espresso";
+		var str_bandeja_de_entrada="Bandeja de Entrada <i class='pull-right' style='font-style:normal;' id='userinfo_inboxCounter'></i> <span>5</span> ";
+		var str_comunidades="Comunidades";
+		var str_socios="Fondos y socios";
+		var str_titulo_modal_link_vce="Enlace Personal VC Espresso";
+		var str_parrafo_modal_link_vce="Por favor copie el siguiente enlace";
+		var str_boton_modal_cancelar="Cancelar";
+		var str_boton_modal_aceptar="Copiar";
+		var str_mensaje_redavanzada_positivo="Ud. está conectad@ a una red avanzada";
+		var str_mensaje_redavanzada_negativo="Ud. no está conectad@ a una red avanzada";
+        break;
+
+	case 'fr':
+		var str_ir_al_inicio="Page Principale";
+		var str_eventos = "Calendrier Global";
+		var str_foodl="Foodle";
+                var str_colaboratorio="COLABORATORIO";
+                var str_ver_perfil="Mon profil";
+                var str_contacts="Mes Contacts";
+                var str_pending="Dans l'attente de contacts <i class='pull-right' style='font-style:normal;' id='userinfo_friendsCounter'></i>";
+                var str_notificaciones="Notifications <i class='pull-right' style='font-style:normal;' id='userinfo_eventsCounter'></i> <span>2</span>";
+                var str_configuracion="Configuration";
+                var str_mis_documentos="Mes fichiers";
+                var str_copiar_enlace_personal="Copiez mon lien personnel <br>VC Espresso";
+                var str_bandeja_de_entrada="Inbox <i class='pull-right' style='font-style:normal;' id='userinfo_inboxCounter'></i> <span>5</span>";
+                var str_comunidades="Communautés";
+                var str_socios="Fonds et Partenaires";
+		var str_ir_a_agenda_global = "Calendrier Global";
+		var str_ir_a_documentos =  "Documents";
+		var str_ir_a_cursos =  "Cours";
+		var str_ir_a_foodl =  "Foodle";
+                var str_titulo_modal_link_vce="VC Espresso lien personnel";
+                var str_parrafo_modal_link_vce="S'il vous vous plaît copier le lien suivant";
+                var str_boton_modal_cancelar="Annuler";
+                var str_boton_modal_aceptar="Copiez";
+                var str_mensaje_redavanzada_positivo="Vous êtes connecté  un Réseau Avance";
+                var str_mensaje_redavanzada_negativo="Vous n'êtes pa sconnecté  un réseau Avance";
+        break;
+
+	case 'en':
+		var str_ir_al_inicio="Home";
+		var str_eventos="Global Agenda";
+        	var str_foodl="Foodle";
+		var str_colaboratorio="COLABORATORIO";
+		var str_ver_perfil="My Profile";
+		var str_contacts="My Contacts";
+		var str_pending="Pending Contacts <i class='pull-right' style='font-style:normal;' id='userinfo_friendsCounter'></i>";
+		var str_notificaciones="Notifications <i class='pull-right' style='font-style:normal;' id='userinfo_eventsCounter'></i> <span>2</span>";
+		var str_configuracion="Configuration";
+		var str_mis_documentos="My Files";
+		var str_copiar_enlace_personal="Copy my Personal Link <br>VC Espresso";
+		var str_bandeja_de_entrada="Inbox <i class='pull-right' style='font-style:normal;' id='userinfo_inboxCounter'></i> <span>5</span>";
+		var str_comunidades="Communities";
+		var str_socios="Funding and partners";
+		var str_titulo_modal_link_vce="VC Espresso personal Link";
+		var str_parrafo_modal_link_vce="Please copy the following link";
+		var str_boton_modal_cancelar="Cancel";
+		var str_boton_modal_aceptar="Copy";
+		var str_mensaje_redavanzada_positivo="You are connected to an Advanced Network";
+		var str_mensaje_redavanzada_negativo="You are not connected to an Advanced Network";
+        break;
+
+	case 'pt':
+		var str_ir_al_inicio="Início";
+		var str_eventos="Agenda Global";
+        	var str_foodl="Foodle";
+		var str_colaboratorio="COLABORATORIO";
+		var str_ver_perfil="Ver Perfil";
+		var str_contacts="Mis Contactos";
+		var str_pending="Solicitudes Pendientes <i class='pull-right' style='font-style:normal;' id='userinfo_friendsCounter'></i>";
+		var str_notificaciones="Notificações <i class='pull-right' style='font-style:normal;' id='userinfo_eventsCounter'></i>  <span>2</span>";
+		var str_configuracion="Configuração";
+		var str_mis_documentos="Meus Arquivos";
+		var str_copiar_enlace_personal="Copiar link pessoal<br>VC Espresso";
+		var str_bandeja_de_entrada="caixa de entrada <i class='pull-right' style='font-style:normal;' id='userinfo_inboxCounter'></i> <span>5</span>";
+		var str_comunidades="Comunidades";
+		var str_socios="Fundos e parceiros";
+		var str_titulo_modal_link_vce="Enlace Personal VC Espresso";
+		var str_parrafo_modal_link_vce="Por favor copie el siguiente enlace";
+		var str_boton_modal_cancelar="Cancelar";
+		var str_boton_modal_aceptar="Copiar";
+		var str_mensaje_redavanzada_positivo="Você está conectado a uma Rede Avançada";
+		var str_mensaje_redavanzada_negativo="Você no está conectado a uma Rede Avançada";
+        break;
+	} 
+
+	$("#str_ir_al_inicio").html(str_ir_al_inicio);
+	$("#str_eventos").html(str_eventos);
+	$("#str_foodl").html(str_foodl);
+	$("#str_colaboratorio").html(str_colaboratorio);
+	$("#str_ver_perfil").html(str_ver_perfil);
+	$("#str_notificaciones").html(str_notificaciones);
+	$("#str_configuracion").html(str_configuracion);
+	$("#str_mis_documentos").html(str_mis_documentos);
+	$("#str_copiar_enlace_personal").html(str_copiar_enlace_personal);
+	$("#str_copiar_enlace_personal").html(str_copiar_enlace_personal);
+	$("#str_bandeja_de_entrada").html(str_bandeja_de_entrada);
+	$("#str_comunidades").html(str_comunidades);
+	$("#str_socios").html(str_socios);
+	$("#str_contacts").html(str_contacts);
+	$("#str_pending").html(str_pending);
+	$("#boton_modal_aceptar").html(str_boton_modal_aceptar);
+	$("#boton_modal_cancelar").html(str_boton_modal_cancelar);
+	$("#titulo_modal_link_vce").html(str_titulo_modal_link_vce);
+	$("#parrafo_modal_link_vce").html(str_parrafo_modal_link_vce);
+
+	var mensaje_red=$("#mensaje-red").val();
+	if (mensaje_red.indexOf("no") >= 0)
+	{
+		
+		$("#mensaje-red").html(str_mensaje_redavanzada_negativo);
+	}
+	else
+	{
+		$("#mensaje-red").html(str_mensaje_redavanzada_positivo);
+	}
+	
+
+  //Set of Links:
+    var colabParams='nren='+nrenColaboratorio+'%26nren_container_url='+window.location.href; 
+  // frontpage
+       var frontpage_url="https://dev1.redclara.net/joomla4_new/joomla4/index.php/"+lang+"/frontpage/?"+colabParams;
+  // groups
+	var groups_url="https://dev1.redclara.net/joomla4_new/joomla4/index.php/"+lang+"/groups/?"+colabParams;
+  //socios
+	var socios_url="https://dev1.redclara.net/joomla4_new/joomla4/index.php/"+lang+"/fondos/?"+colabParams;
+  // contacts
+  	var contacts_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Ffriends%2F%3F"+colabParams;
+	var pending_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Ffriends%2Fpending%2F%3F"+colabParams;
+  // profile
+  	var profile_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Fprofile%2F%3F"+colabParams;
+  // notifications
+  	var notifications_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Fprofile%2Fnotifications%2F%3F"+colabParams;
+  // profile/edit
+  	var profile_edit_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Fprofile%2Fedit?"+colabParams;
+  // photos
+  	var photos_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Fphotos%2F%3F"+colabParams;
+  // inbox
+  	var inbox_url="https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2Finbox%2F%3F"+colabParams;
+  // VC Expreso
+	var vcexpreso_url="https://sivic.redclara.net/Shibboleth.sso/Login?target=https%3A%2F%2Fsivic.redclara.net%2Fsivic%2Fvc-espresso.php%3Fnren%3D"+nrenColaboratorio+"%26lang%3D"+lang+"&entityID=";
+  // SIVIC
+	var sivi_url="https://sivic.redclara.net/Shibboleth.sso/Login?target=https%3A%2F%2Fsivic.redclara.net%2Fsivic%2Fsivic.php%3Fnren%3D"+nrenColaboratorio+"%26lang%3D"+lang+"&entityID=";
+  // Dupload
+       //the filesender_url is taken from config.js, as this service is deployable by the NREN
+	//var filesender_url = "https://filesender.redclara.net/filesender";
+  // Mapa
+	var mapa_url = "http://dev1.redclara.net/mapa_colaboracion/mapa.php?lang="+lang;
+  // eventos
+        var eventos_url="https://eventos.redclara.net/indico?lang="+lang;
+  // Foodle
+	var foodl_url="https://foodl.org//simplesaml/module.php/core/as_login.php?AuthId=saml&ReturnTo=https%3A//foodl.org/&saml:idp=";
+	
+	//Setting the href attribute
+	$("#profile_link").attr('href',decodeURIComponent(profile_url));	   
+	$("#notifications_link").attr('href',decodeURIComponent(notifications_url));	   
+	$("#edit_link").attr('href',decodeURIComponent(profile_edit_url));	   
+	$("#photos_link").attr('href',decodeURIComponent(photos_url));	   
+	$("#inbox_link").attr('href',decodeURIComponent(inbox_url));
+	$("#groups_link").attr('href',groups_url);
+	$("#socios_link").attr('href',socios_url);
+	$("#contacts_link").attr('href',decodeURIComponent(contacts_url));
+	$("#pending_link").attr('href',decodeURIComponent(pending_url));
+	$("#frontpage_link").attr('href',frontpage_url);
+	$("#frontpage_link_1").attr('href',frontpage_url);
+	$("#frontpage_link_2").attr('href',frontpage_url);
+	$("#vc-espresso_link").attr('href',vcexpreso_url);
+	$("#sivic_link").attr('href',sivi_url);
+        $("#eventos_link").attr('href',eventos_url);
+        $("#foodl_link").attr('href',foodl_url);
+	$("#filesender_link").attr('href',filesender_url);
+	$("#mapa_link").attr('href',mapa_url);
+	
+	if(cadGET)
+	{
+		if (cadGET.indexOf("%26") >= 0)
+		{
+			return    base_idp_clara_url+"https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2F%3F"+cadGET;
+		}
+		else
+		{	
+			return    base_idp_clara_url+"https%3A%2F%2Fdev1.redclara.net%2Fjoomla4_new%2Fjoomla4%2Findex.php%2F"+lang+"%2F"+cadGET;
+		}
+	}
+	else
+	{
+		return    base_idp_clara_url+frontpage_url;
+	}
+   }
+  
+function leerGET(){
+  var cadGET = location.search.substr(1,location.search.length);
+  var arrGET = cadGET.split("&");
+  var asocGET = new Array();
+  var variable = "";
+  var valor = "";
+  for(i=0;i<arrGET.length;i++){
+    var aux = arrGET[i].split("=");
+    variable = aux[0];
+    valor = aux[1];
+    asocGET[variable] = valor;
+  }
+  return asocGET;
+}
+  
+  
+  /*
+  Multiples idiomas
+  End
+  */
+  
+  
+  
+ </script>
+
+
+<script type="text/javascript">
+
+  function getActiveTab(string1){
+		$(".menu-active").attr('class', '');
+		$("#"+string1).attr('class', 'menu-active');
+  }
+	
+</script>
+<script type="text/javascript" src="http://magic-project.eu/cookiesStep1.js.php"></script>
+ 
+  
+ </div> <!-- cierro el div que contiene toda la pagina -->
+</body>
+</html>
+
+

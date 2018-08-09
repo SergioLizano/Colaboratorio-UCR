@@ -1,0 +1,36 @@
+
+
+1. Copy the example configuration file from config-example.js to config.js
+
+2. Edit the variables in config.js
+
+3. Upload your NREN logo to images/logoTop.png  (or copy logoTop-example.js to logoTop.png) - this should be a  150 x 50 pixels png. You can also change the logo location in index.html (not recommended as index.html could change in the repository)
+
+4. To enable your users to use http://colaboratorio.nren.net/user@university.edu instead http://vcespresso.redclara.net/user@university.edu, you'll need to enable mod_rewrite.c in apache, change the base_vce_url variable in config.js file and enable the following rules in your Apache's site configuration file (preferred option) or in your .htaccess one:
+
+<Directory /your/path/to/colaboratorio>
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.+)@(.+)$ /vc.html?var=$1@$2 [R]
+    RewriteRule ^@(.+)$ /vc.html?var=$1 [R]
+    RewriteRule ^([a-f0-9]{32})$ /vc.html?var=@$1 [R]
+  </IfModule>
+</Directory>
+
+You will need to change the directory path. Also you could need to change the Redirect to /subdir/vc.html... if your URL is something like http://www.nren.net/subdir 
+
+This is an example for Apache. You'll need to change the rules format for other web servers.
+
+5. If you're going to use the Discojuice Embedded service, you need to copy landing_colaboratorio/additional-metadata-example.js to landing_colaboratorio/additional-metadata.js and edit this file to add your IdPs.
+
+6. If your institution has deployed a filesender, you need to change the  var filesender_url in config.js
+
+7. If your institution has deployed a set of mconf-live and mconf-recording server, you'll need to register it to the loadbalancer by sending an e-mail to vsog@redclara.net with your mconf-live server name and the salt for mconf network. 
+
+8. If you want to add a service, you'll need to edit the index.html file. It's suggested you make a copy of your edited file and keep it in case a new version of the Colaboratorio Container project is released and change it. The best way to do it is to copy, paste and edit the definitions for another service in the following sections:
+
+  a. The link in the left menu (section <div id="menu-lateral" class="navbar-left" style="display:none">)
+  b. The URL of the service (section //Set of Links:). Here, if your service is saml enabled, you can call it asking to login in the IdP the user is currently authenticated. If you want to do it, you'll need to follow example for foodl, sivic or vcexpresso service in the URL of the service and edit the js/localmessage.js (section //Reset URLs that use idp_entity_id).
+  c. The function to (section //Setting the href attribute)
+
+
